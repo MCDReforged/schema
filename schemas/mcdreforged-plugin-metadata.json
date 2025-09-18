@@ -1,0 +1,161 @@
+{
+  "$id": "https://json.schemastore.org/mcdreforged-plugin-metadata.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "description": "The identifier of the plugin",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "version": {
+      "description": "The version of the plugin, in a less restrictive semver format",
+      "pattern": "^\\d+(\\.\\d+)*(?:[-+][0-9A-Za-z]*(?:\\.[0-9A-Za-z]+)*)*$",
+      "title": "Version",
+      "type": "string"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The name of the plugin",
+      "title": "Name"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "description": "The description of the plugin",
+          "type": "string"
+        },
+        {
+          "additionalProperties": {
+            "description": "The description of the plugin in the given language",
+            "type": "string"
+          },
+          "description": "The description translation mapping of the plugin. It maps from language to description string",
+          "propertyNames": {
+            "description": "The language code, e.g. en_us, zh_cn"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The description of the plugin",
+      "title": "Description"
+    },
+    "author": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The author(s) of the plugin",
+      "title": "Author"
+    },
+    "link": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The url to the plugin, e.g. link to a github repository",
+      "title": "Link"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The license of the plugin. Recommended to use the SPDX License Identifiers",
+      "title": "License"
+    },
+    "dependencies": {
+      "description": "A dict of dependencies the plugin relies on",
+      "patternProperties": {
+        "^[a-z][a-z0-9_]{0,63}$": {
+          "pattern": "^((?:<=|>=|<|>|==|=|\\^|~)?[\\dxX*]+(\\.[\\dxX*]+)*(?:[-+][0-9A-Za-z]*(?:\\.[0-9A-Za-z]+)*)*)(( )((?:<=|>=|<|>|==|=|\\^|~)?[\\dxX*]+(\\.[\\dxX*]+)*(?:[-+][0-9A-Za-z]*(?:\\.[0-9A-Za-z]+)*)*))*$",
+          "type": "string"
+        }
+      },
+      "title": "Dependencies",
+      "type": "object"
+    },
+    "entrypoint": {
+      "anyOf": [
+        {
+          "pattern": "^([a-z][a-z0-9_]{0,63}[a-zA-Z0-9_-]*)((\\.)([a-z][a-z0-9_]{0,63}[a-zA-Z0-9_-]*))*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The entrypoint module of the multi-file plugin. The entrypoint should be import-able",
+      "title": "Entrypoint"
+    },
+    "archive_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The file name of generated .mcdr packed plugin in CLI",
+      "title": "Archive Name"
+    },
+    "resources": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "A list of file or folder names that will be packed into the generated .mcdr packed plugin file in CLI",
+      "title": "Resources"
+    }
+  },
+  "required": [
+    "id",
+    "version"
+  ],
+  "title": "PluginMetadataJsonModel",
+  "type": "object"
+}

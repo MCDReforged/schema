@@ -1,0 +1,305 @@
+{
+  "$defs": {
+    "RconConfig": {
+      "properties": {
+        "enable": {
+          "default": false,
+          "title": "Enable",
+          "type": "boolean"
+        },
+        "address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "127.0.0.1",
+          "title": "Address"
+        },
+        "port": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 25575,
+          "title": "Port"
+        },
+        "password": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "password",
+          "title": "Password"
+        }
+      },
+      "title": "RconConfig",
+      "type": "object"
+    }
+  },
+  "$id": "https://json.schemastore.org/mcdreforged-config.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "language": {
+      "default": "en_us",
+      "title": "Language",
+      "type": "string"
+    },
+    "working_directory": {
+      "default": "server",
+      "title": "Working Directory",
+      "type": "string"
+    },
+    "start_command": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      ],
+      "default": "echo Hello world from MCDReforged",
+      "title": "Start Command"
+    },
+    "handler": {
+      "default": "vanilla_handler",
+      "title": "Handler",
+      "type": "string"
+    },
+    "encoding": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "utf8",
+      "title": "Encoding"
+    },
+    "decoding": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "utf8",
+      "title": "Decoding"
+    },
+    "environment": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Environment"
+    },
+    "environment_inherit": {
+      "default": true,
+      "title": "Environment Inherit",
+      "type": "boolean"
+    },
+    "rcon": {
+      "$ref": "#/$defs/RconConfig"
+    },
+    "plugin_directories": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Plugin Directories",
+      "type": "array"
+    },
+    "catalogue_meta_cache_ttl": {
+      "default": 1200,
+      "title": "Catalogue Meta Cache Ttl",
+      "type": "integer"
+    },
+    "catalogue_meta_fetch_timeout": {
+      "default": 15,
+      "title": "Catalogue Meta Fetch Timeout",
+      "type": "number"
+    },
+    "catalogue_meta_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Catalogue Meta Url"
+    },
+    "plugin_download_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Plugin Download Url"
+    },
+    "plugin_download_timeout": {
+      "default": 15,
+      "title": "Plugin Download Timeout",
+      "type": "number"
+    },
+    "plugin_pip_install_extra_args": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Plugin Pip Install Extra Args"
+    },
+    "check_update": {
+      "default": true,
+      "title": "Check Update",
+      "type": "boolean"
+    },
+    "advanced_console": {
+      "default": true,
+      "title": "Advanced Console",
+      "type": "boolean"
+    },
+    "http_proxy": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Http Proxy"
+    },
+    "https_proxy": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Https Proxy"
+    },
+    "telemetry": {
+      "default": true,
+      "title": "Telemetry",
+      "type": "boolean"
+    },
+    "disable_console_thread": {
+      "default": false,
+      "title": "Disable Console Thread",
+      "type": "boolean"
+    },
+    "disable_console_color": {
+      "default": false,
+      "title": "Disable Console Color",
+      "type": "boolean"
+    },
+    "custom_handlers": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Custom Handlers"
+    },
+    "custom_info_reactors": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Custom Info Reactors"
+    },
+    "watchdog_threshold": {
+      "default": 10,
+      "title": "Watchdog Threshold",
+      "type": "integer"
+    },
+    "handler_detection": {
+      "default": true,
+      "title": "Handler Detection",
+      "type": "boolean"
+    },
+    "debug": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "title": "Debug",
+      "type": "object"
+    },
+    "write_server_output_to_log_file": {
+      "default": false,
+      "title": "Write Server Output To Log File",
+      "type": "boolean"
+    }
+  },
+  "title": "MCDReforgedConfig",
+  "type": "object"
+}

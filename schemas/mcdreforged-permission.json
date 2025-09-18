@@ -1,0 +1,88 @@
+{
+  "$id": "https://json.schemastore.org/mcdreforged-permission.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "default_level": {
+      "default": "user",
+      "title": "Default Level",
+      "type": "string"
+    },
+    "owner": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Owner"
+    },
+    "admin": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Admin"
+    },
+    "helper": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Helper"
+    },
+    "user": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "User"
+    },
+    "guest": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Guest"
+    }
+  },
+  "title": "PermissionConfigModel",
+  "type": "object"
+}

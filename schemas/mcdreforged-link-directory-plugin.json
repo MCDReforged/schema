@@ -1,0 +1,22 @@
+{
+  "$id": "https://json.schemastore.org/mcdreforged-link-directory-plugin.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "target": {
+      "description": "The path to a directory where the actual directory plugin is to be loaded",
+      "title": "Target",
+      "type": "string"
+    },
+    "skip_package_legality_check": {
+      "default": false,
+      "description": "Skip package legality checks",
+      "title": "Skip Package Legality Check",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "target"
+  ],
+  "title": "LinkedDirectoryPluginJsonModel",
+  "type": "object"
+}

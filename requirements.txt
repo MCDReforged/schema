@@ -1,0 +1,2 @@
+mcdreforged>=2.16.0a2
+pydantic
