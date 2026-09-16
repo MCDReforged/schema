@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 from mcdreforged.mcdr_config import MCDReforgedConfig
 from mcdreforged.permission.permission_manager import PermissionConfigModel
-from mcdreforged.plugin.meta.schema import PluginMetadataJsonModel, PluginBuildConfigJsonModel
+from mcdreforged.plugin.meta.schema import PluginMetadataJsonModel
 from mcdreforged.plugin.type.directory_plugin import LinkedDirectoryPluginJsonModel
 
 
@@ -27,7 +27,6 @@ def main():
 	generate(MCDReforgedConfig)
 	generate(PermissionConfigModel)
 	generate(PluginMetadataJsonModel)
-	generate(PluginBuildConfigJsonModel)
 	generate(LinkedDirectoryPluginJsonModel)
 
 

@@ -1,7 +1,113 @@
 {
+  "$defs": {
+    "Person": {
+      "properties": {
+        "name": {
+          "description": "Name of the person",
+          "title": "Name",
+          "type": "string"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Email of the person",
+          "title": "Email"
+        },
+        "homepage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Homepage of the person",
+          "title": "Homepage"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Person",
+      "type": "object"
+    },
+    "PluginLinks": {
+      "properties": {
+        "homepage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Homepage of the plugin",
+          "title": "Homepage"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Source repository of the plugin",
+          "title": "Source"
+        },
+        "documentation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Documentation page of the plugin",
+          "title": "Documentation"
+        },
+        "issues": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Issue page of the plugin",
+          "title": "Issues"
+        }
+      },
+      "title": "PluginLinks",
+      "type": "object"
+    }
+  },
   "$id": "https://json.schemastore.org/mcdreforged-plugin-metadata.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "properties": {
+    "schema_version": {
+      "default": 0,
+      "description": "The schema version of mcdreforged.plugin.json; omitted in version 0",
+      "title": "Schema Version",
+      "type": "integer"
+    },
     "id": {
       "description": "The identifier of the plugin",
       "pattern": "^[a-z][a-z0-9_]{0,63}$",
@@ -68,8 +174,75 @@
         }
       ],
       "default": null,
+      "deprecated": true,
       "description": "The author(s) of the plugin",
       "title": "Author"
+    },
+    "authors": {
+      "anyOf": [
+        {
+          "description": "Name of the person",
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/Person",
+          "description": "Detailed information of the person"
+        },
+        {
+          "items": {
+            "anyOf": [
+              {
+                "description": "Name of the person",
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/Person",
+                "description": "Detailed information of the person"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The author(s) of the plugin",
+      "title": "Authors"
+    },
+    "maintainers": {
+      "anyOf": [
+        {
+          "description": "Name of the person",
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/Person",
+          "description": "Detailed information of the person"
+        },
+        {
+          "items": {
+            "anyOf": [
+              {
+                "description": "Name of the person",
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/Person",
+                "description": "Detailed information of the person"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The current maintainer(s) of the plugin",
+      "title": "Maintainers"
     },
     "link": {
       "anyOf": [
@@ -81,8 +254,21 @@
         }
       ],
       "default": null,
+      "deprecated": true,
       "description": "The url to the plugin, e.g. link to a github repository",
       "title": "Link"
+    },
+    "links": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PluginLinks"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The links related to the plugin"
     },
     "license": {
       "anyOf": [
@@ -107,6 +293,19 @@
       },
       "title": "Dependencies",
       "type": "object"
+    },
+    "requirements_file": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "requirements.txt",
+      "description": "Python requirements file path inside the multi-file plugin; omit to try requirements.txt automatically, or use null to disable",
+      "title": "Requirements File"
     },
     "entrypoint": {
       "anyOf": [
