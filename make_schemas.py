@@ -21,8 +21,10 @@ def main():
 	def generate(clazz: Type[BaseModel]):
 		url = cast(str, cast(dict, clazz.model_config['json_schema_extra'])['$id'])
 		file_name = Path(url.rsplit('/', 1)[-1])
-		with open(output_dir / file_name, 'w', encoding='utf8') as f:
+		file_path = output_dir / file_name
+		with open(file_path, 'w', encoding='utf8') as f:
 			json.dump(clazz.model_json_schema(), f, indent=2, ensure_ascii=False)
+		print('Generated', file_path)
 
 	generate(MCDReforgedConfig)
 	generate(PermissionConfigModel)
